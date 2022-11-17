@@ -20,19 +20,19 @@ def generateSmall(x):
         randomListC.append(n3)
 
     #W = random.randint(50,101) #weight of bag
-    W = round( ( sum(randomListW) / size ) * 2 ) #Weight equals double the average of the weight of all items to be easier to do
+    W = random.randint(1,sum(randomListW)) #Weight equals double the average of the weight of all items to be easier to do
 
     with open("smallInput/INPUT_"+str(x)+".txt","w") as fp:
         fp.write(str(W)+"\n")
         fp.write(str(m)+"\n")
-        for item in randomListW:
-            fp.write("%s " %item)
+        randomListW2 = ', '.join(map(str,randomListW))
+        fp.write(randomListW2)
         fp.write("\n")
-        for item in randomListV:
-            fp.write("%s " %item)
+        randomListV2 = ', '.join(map(str,randomListV))
+        fp.write(randomListV2)
         fp.write("\n")
-        for item in randomListC:
-            fp.write("%s " %item)
+        randomListC2 = ', '.join(map(str,randomListC))
+        fp.write(randomListC2)
 
     fp.close()
 
@@ -62,14 +62,14 @@ def generateLarge(x):
     with open("largeInput/INPUT_"+str(x)+".txt","w") as fp:
         fp.write(str(W)+"\n")
         fp.write(str(m)+"\n")
-        for item in randomListW:
-            fp.write("%s " %item)
+        randomListW2 = ', '.join(map(str,randomListW))
+        fp.write(randomListW2)
         fp.write("\n")
-        for item in randomListV:
-            fp.write("%s " %item)
+        randomListV2 = ', '.join(map(str,randomListV))
+        fp.write(randomListV2)
         fp.write("\n")
-        for item in randomListC:
-            fp.write("%s " %item)
+        randomListC2 = ', '.join(map(str,randomListC))
+        fp.write(randomListC2)
 
     fp.close()
 
