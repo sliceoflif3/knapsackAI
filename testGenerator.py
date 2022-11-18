@@ -20,7 +20,7 @@ def generateSmall(x):
         randomListC.append(n3)
 
     #W = random.randint(50,101) #weight of bag
-    W = random.randint(1,sum(randomListW)) #Weight equals double the average of the weight of all items to be easier to do
+    W = random.randint(round(sum(randomListW)/2),sum(randomListW)) #Weight equals double the average of the weight of all items to be easier to do
 
     with open("smallInput/INPUT_"+str(x)+".txt","w") as fp:
         fp.write(str(W)+"\n")
@@ -57,7 +57,7 @@ def generateLarge(x):
    
 
     #W = random.randint(50,101) #weight of bag
-    W = round( ( sum(randomListW) / size ) * 2 ) #Weight equals double the average of the weight of all items to be easier to do
+    W = random.randint(round(sum(randomListW)/2),sum(randomListW)) #Weight equals double the average of the weight of all items to be easier to do
 
     with open("largeInput/INPUT_"+str(x)+".txt","w") as fp:
         fp.write(str(W)+"\n")

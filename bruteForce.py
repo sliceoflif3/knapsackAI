@@ -1,7 +1,7 @@
 from itertools import combinations
 
 from datetime import datetime
-startTime = datetime.now()
+# startTime = datetime.now()
 
     
 def bruteForceKnapsack(pathIn, pathOut):
@@ -19,12 +19,16 @@ def bruteForceKnapsack(pathIn, pathOut):
         wList = f.readline().split(", ")
         vList = f.readline().split(", ")
         cList = f.readline().split(", ")
-
+    
     for i in range(0,len(wList)):
         iList.append(i)
-
+    for i in range(len(wList)):
+        if int(wList[i])> W:
+            iList.remove(i)
+    
 
     subsets = []
+
 
     for i in range(len(iList)+1):
         subsets += [list(j) for j in combinations(iList,i)]
@@ -32,9 +36,12 @@ def bruteForceKnapsack(pathIn, pathOut):
     legalSubset = []
 
     run = 0
+    # print("sign\n")
+    # print(len(subsets))
+    # print("end\n")
 
     for subset in subsets:
-        print(run)
+        # print(run)
         run += 1
         totalW = 0
         totalC = []
@@ -46,7 +53,6 @@ def bruteForceKnapsack(pathIn, pathOut):
             legalSubset.append(subset)
 
     # print(legalSubset)
-
     maxVIndex = -1
     maxV = -1
     for subset in legalSubset:
@@ -60,7 +66,6 @@ def bruteForceKnapsack(pathIn, pathOut):
     result = []
     for i in range(0,len(wList)):
         result.append(0)
-
     for i in subsets[maxVIndex]:
         result[i]=1
 
@@ -75,10 +80,15 @@ def bruteForceKnapsack(pathIn, pathOut):
             fp.write(resultList)
 
 
-for i in range(1,6):
-    pathIn = "smallInput/INPUT_" + str(i) + ".txt" 
-    pathOut = "smallOutput/OUTPUT_" + str(i) + ".txt"
-    bruteForceKnapsack(pathIn,pathOut)   
+if __name__=="__main__":
+    for i in range(1,6):
+        pathIn = "smallInput/INPUT_" + str(i) + ".txt" 
+        pathOut = "smallOutput1/OUTPUT_" + str(i) + ".txt"
+        bruteForceKnapsack(pathIn,pathOut)   
+
+    # pathIn = "INPUT_1" +".txt" 
+    # pathOut = "OUTPUT_1"+".txt"
+    
 
 # for i in range(1,6):
 #     pathIn = "largeInput/INPUT_" + str(i) + ".txt" 
@@ -86,4 +96,4 @@ for i in range(1,6):
 #     bruteForceKnapsack(pathIn,pathOut)   
 
 
-print(datetime.now() - startTime)
+# print(datetime.now() - startTime)
