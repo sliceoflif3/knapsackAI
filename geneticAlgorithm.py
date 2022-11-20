@@ -1,6 +1,11 @@
 from numpy.random import randint
 from numpy.random import rand
     
+
+from datetime import datetime
+startTime = datetime.now()
+
+
 def genetic(pathIn, pathOut):
     W = 0
     m = 1
@@ -128,9 +133,12 @@ def genetic(pathIn, pathOut):
 
 if __name__=="__main__":
     for i in range(1,11):
-        pathIn = "smallInput/INPUT_" + str(i) + ".txt" 
-        pathOut = "smallOutput4/OUTPUT_" + str(i) + ".txt"
+        pathIn = "largeInput/INPUT_" + str(i) + ".txt" 
+        pathOut = "largeOutput4/OUTPUT_" + str(i) + ".txt"
         genetic(pathIn,pathOut)   
+
+
+print(datetime.now() - startTime)
 
 # if __name__=="__main__":
 #     for i in range(1,11):

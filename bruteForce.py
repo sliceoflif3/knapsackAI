@@ -1,7 +1,7 @@
 from itertools import combinations
 
 from datetime import datetime
-# startTime = datetime.now()
+startTime = datetime.now()
 
     
 def bruteForceKnapsack(pathIn, pathOut):
@@ -81,7 +81,7 @@ def bruteForceKnapsack(pathIn, pathOut):
 
 
 if __name__=="__main__":
-    for i in range(1,6):
+    for i in range(2,3):
         pathIn = "smallInput/INPUT_" + str(i) + ".txt" 
         pathOut = "smallOutput1/OUTPUT_" + str(i) + ".txt"
         bruteForceKnapsack(pathIn,pathOut)   
@@ -96,4 +96,4 @@ if __name__=="__main__":
 #     bruteForceKnapsack(pathIn,pathOut)   
 
 
-# print(datetime.now() - startTime)
+print(datetime.now() - startTime)
