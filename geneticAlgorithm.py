@@ -100,29 +100,30 @@ def genetic(pathIn, pathOut):
     # enumerate generations
     for gen in range(n_iter):
         scores = [objective(c) for c in pop]
-    # check for new best solution
-    for i in range(n_pop):
-        # if scores[i] < best_eval:
-        if scores[i] > best_eval:
-            best, best_eval = pop[i], scores[i]
-            print(">%d,new best f(%s) = %.3f" %(gen,pop[i],scores[i]))
-    # select parents
-    selected = [selection(pop,scores) for _ in range(n_pop)]
-	# create the next generation
-    children = list()
-    for i in range(0, n_pop, 2):
-        # get selected parents in pairs
-        p1, p2 = selected[i], selected[i+1]
-        # crossover and mutation
-        for c in crossover(p1,p2, r_cross):
-            # mutation
-            mutation(c, r_mut)
-            # store for next generation
-            children.append(c)
-    # replace population
-    pop = children 
+        # check for new best solution
+        for i in range(n_pop):
+            # if scores[i] < best_eval:
+            if scores[i] > best_eval:  
+                #print(">%d,new best f(%s) = %.3f > %d" %(gen,pop[i],scores[i],best_eval))
+                best, best_eval = pop[i], scores[i]
+        # select parents
+        selected = [selection(pop,scores) for _ in range(n_pop)]
+        # create the next generation
+        children = list()
+        for i in range(0, n_pop, 2):
+            # get selected parents in pairs
+            p1, p2 = selected[i], selected[i+1]
+            # crossover and mutation
+            for c in crossover(p1,p2, r_cross):
+                # mutation
+                mutation(c, r_mut)
+                # store for next generation
+                children.append(c)
+        # replace population
+        pop = children 
     
     with open(pathOut,"w") as fp:
+        print(pathIn)
         if best_eval != -1:
             fp.write(str(best_eval))
             fp.write("\n")
@@ -135,6 +136,8 @@ if __name__=="__main__":
     for i in range(1,11):
         pathIn = "largeInput/INPUT_" + str(i) + ".txt" 
         pathOut = "largeOutput4/OUTPUT_" + str(i) + ".txt"
+        # pathIn = "INPUT_test.txt" 
+        # pathOut = "OUTPUT_test.txt"
         genetic(pathIn,pathOut)   
 
 

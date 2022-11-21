@@ -86,8 +86,8 @@ def local_beam_search(W, n1, w, v,c):
 
 if __name__=="__main__":
     for i in range(1,11):
-        pathIn = "smallInput/INPUT_" + str(i) + ".txt" 
-        pathOut = "smallOutput3/OUTPUT_" + str(i) + ".txt"
+        pathIn = "largeInput/INPUT_" + str(i) + ".txt" 
+        pathOut = "largeOutput3/OUTPUT_" + str(i) + ".txt"
         run(pathIn,pathOut)  
 
 print(datetime.now() - startTime)
