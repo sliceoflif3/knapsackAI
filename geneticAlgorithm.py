@@ -17,10 +17,9 @@ def genetic(pathIn, pathOut):
     with open(pathIn) as f:
         W = int(f.readline())
         m = int(f.readline())
-        wList = f.readline().split(", ")
-        vList = f.readline().split(", ")
-        cList = f.readline().split(", ")
-
+        wList = f.readline().rstrip('\n').split(", ")
+        vList = f.readline().rstrip('\n').split(", ")
+        cList = f.readline().rstrip('\n').split(", ")
 
     for i in range(0,len(wList)):
         iList.append(i)
@@ -81,7 +80,7 @@ def genetic(pathIn, pathOut):
                 totalC.append(cList[i])
 
         if totalW > W or len(totalC)!=m: 
-            #print(totalW)
+            #print(totalC)
             return -1
         else:
             totalV = 0
@@ -102,9 +101,10 @@ def genetic(pathIn, pathOut):
         scores = [objective(c) for c in pop]
         # check for new best solution
         for i in range(n_pop):
+            #print(scores[i])
             # if scores[i] < best_eval:
             if scores[i] > best_eval:  
-                #print(">%d,new best f(%s) = %.3f > %d" %(gen,pop[i],scores[i],best_eval))
+                print(">%d,new best f(%s) = %.3f > %d" %(gen,pop[i],scores[i],best_eval))
                 best, best_eval = pop[i], scores[i]
         # select parents
         selected = [selection(pop,scores) for _ in range(n_pop)]
@@ -133,9 +133,9 @@ def genetic(pathIn, pathOut):
             fp.write("No result / Can't find correct result")
 
 if __name__=="__main__":
-    for i in range(1,11):
-        pathIn = "largeInput/INPUT_" + str(i) + ".txt" 
-        pathOut = "largeOutput4/OUTPUT_" + str(i) + ".txt"
+    for i in range(1,2):
+        pathIn = "message.txt" 
+        pathOut = "hung.txt"
         # pathIn = "INPUT_test.txt" 
         # pathOut = "OUTPUT_test.txt"
         genetic(pathIn,pathOut)   

@@ -114,9 +114,9 @@ if __name__ == "__main__":
             limit = int(fi.readline())
             m = int(fi.readline())
 
-            wei_ls = fi.readline().split(", ")
-            val_ls = fi.readline().split(", ")
-            cls_ls = fi.readline().split(", ")
+            wei_ls = fi.readline().rstrip('\n').split(", ")
+            val_ls = fi.readline().rstrip('\n').split(", ")
+            cls_ls = fi.readline().rstrip('\n').split(", ")
 
             for i in range(len(wei_ls)):
                 cls = int(cls_ls[i])

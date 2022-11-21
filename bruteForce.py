@@ -16,9 +16,9 @@ def bruteForceKnapsack(pathIn, pathOut):
     #with open("smallInput/INPUT_"+str(n)+".txt") as f:
         W = int(f.readline())
         m = int(f.readline())
-        wList = f.readline().split(", ")
-        vList = f.readline().split(", ")
-        cList = f.readline().split(", ")
+        wList = f.readline().rstrip('\n').split(", ")
+        vList = f.readline().rstrip('\n').split(", ")
+        cList = f.readline().rstrip('\n').split(", ")
     
     for i in range(0,len(wList)):
         iList.append(i)
